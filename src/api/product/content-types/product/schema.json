@@ -1,0 +1,109 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sku": {
+      "type": "customField",
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "price": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "promotion_price": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "stock": {
+      "type": "integer",
+      "default": 0
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "total_purchase": {
+      "type": "integer",
+      "default": 0
+    },
+    "size": {
+      "type": "integer",
+      "default": 0
+    },
+    "height": {
+      "type": "float"
+    },
+    "color": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::color.color",
+      "inversedBy": "products"
+    },
+    "is_parent": {
+      "type": "boolean",
+      "default": false
+    },
+    "detail_information": {
+      "type": "blocks"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "children_product": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "parent_product"
+    },
+    "parent_product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "children_product"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "height_type": {
+      "type": "enumeration",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  }
+}

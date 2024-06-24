@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_new_product_new_products",
+  "info": {
+    "displayName": "new_product"
+  },
+  "options": {},
+  "attributes": {
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    }
+  }
+}

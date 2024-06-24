@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reels",
+  "info": {
+    "singularName": "reel",
+    "pluralName": "reels",
+    "displayName": "Reel"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "is_showed": {
+      "type": "boolean"
+    },
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

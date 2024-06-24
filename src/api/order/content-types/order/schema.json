@@ -1,0 +1,97 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "order_code": {
+      "type": "customField",
+      "options": {
+        "uuid-format": "^[A-Z0-9]{10}$"
+      },
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "customer_address": {
+      "type": "string"
+    },
+    "shipping_method": {
+      "type": "enumeration",
+      "enum": [
+        "Giao hàng nhanh",
+        "Giao hàng tiết kiệm"
+      ]
+    },
+    "payment_method": {
+      "type": "enumeration",
+      "enum": [
+        "Trả khi nhận hàng",
+        "VNPAY"
+      ],
+      "default": "Trả khi nhận hàng"
+    },
+    "total": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "transport_fee": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "WAIT_CONFIRM",
+        "CONFIRM",
+        "PROCESSING",
+        "DELIVERING",
+        "DELAY_DELIVERING",
+        "SUCCESS",
+        "REFUNDED",
+        "RETURNED",
+        "CANCEL"
+      ]
+    },
+    "customer_full_name": {
+      "type": "string"
+    },
+    "voucher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::voucher.voucher"
+    },
+    "order_detail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order-detail.order-detail",
+      "mappedBy": "order"
+    },
+    "transaction": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::transaction.transaction",
+      "mappedBy": "order"
+    }
+  }
+}

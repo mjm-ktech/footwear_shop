@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vouchers",
+  "info": {
+    "singularName": "voucher",
+    "pluralName": "vouchers",
+    "displayName": "Voucher"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "percent_decrease": {
+      "type": "integer",
+      "default": 0
+    },
+    "amount_decrease": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "expiry_date": {
+      "type": "datetime"
+    },
+    "stock": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
