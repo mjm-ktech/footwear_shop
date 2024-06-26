@@ -858,11 +858,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
-    products: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::product.product'
-    >;
     number_of_products: Attribute.Integer & Attribute.DefaultTo<0>;
     images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     createdAt: Attribute.DateTime;
@@ -1096,17 +1091,26 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    sku: Attribute.UID &
-      Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
+    sku: Attribute.UID<
+      undefined,
+      undefined,
+      {
+        'uuid-format': '^[A-Z0-9]{10}$';
+      }
+    > &
+      Attribute.CustomField<
+        'plugin::strapi-advanced-uuid.uuid',
+        {
+          'uuid-format': '^[A-Z0-9]{10}$';
+        }
+      >;
     name: Attribute.String;
     avatar: Attribute.Media<'images' | 'videos'>;
     gallery: Attribute.Media<'images' | 'videos', true>;
     price: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     promotion_price: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
-    stock: Attribute.Integer & Attribute.DefaultTo<0>;
     description: Attribute.Blocks;
     total_purchase: Attribute.Integer & Attribute.DefaultTo<0>;
-    size: Attribute.Integer & Attribute.DefaultTo<0>;
     height: Attribute.Float;
     color: Attribute.Relation<
       'api::product.product',
@@ -1115,9 +1119,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     is_parent: Attribute.Boolean & Attribute.DefaultTo<false>;
     detail_information: Attribute.Blocks;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::product.product',
-      'manyToOne',
+      'oneToMany',
       'api::category.category'
     >;
     children_product: Attribute.Relation<
@@ -1132,6 +1136,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     slug: Attribute.String;
     height_type: Attribute.Enumeration<['low', 'medium', 'high']>;
+    product_details: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product-detail.product-detail'
+    >;
+    total_view: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1142,6 +1152,42 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductDetailProductDetail extends Schema.CollectionType {
+  collectionName: 'product_details';
+  info: {
+    singularName: 'product-detail';
+    pluralName: 'product-details';
+    displayName: 'Product detail';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'api::product-detail.product-detail',
+      'manyToOne',
+      'api::product.product'
+    >;
+    stock: Attribute.Integer & Attribute.DefaultTo<0>;
+    size: Attribute.Integer & Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product-detail.product-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product-detail.product-detail',
       'oneToOne',
       'admin::user'
     > &
@@ -1253,19 +1299,20 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
     singularName: 'wishlist';
     pluralName: 'wishlists';
     displayName: 'Wishlist';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    users_permissions_user: Attribute.Relation<
+    user: Attribute.Relation<
       'api::wishlist.wishlist',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    products: Attribute.Relation<
+    product: Attribute.Relation<
       'api::wishlist.wishlist',
-      'oneToMany',
+      'oneToOne',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;
@@ -1310,6 +1357,7 @@ declare module '@strapi/types' {
       'api::order.order': ApiOrderOrder;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
       'api::product.product': ApiProductProduct;
+      'api::product-detail.product-detail': ApiProductDetailProductDetail;
       'api::reel.reel': ApiReelReel;
       'api::transaction.transaction': ApiTransactionTransaction;
       'api::voucher.voucher': ApiVoucherVoucher;

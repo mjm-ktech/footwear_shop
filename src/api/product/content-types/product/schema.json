@@ -14,7 +14,10 @@
   "attributes": {
     "sku": {
       "type": "customField",
-      "customField": "plugin::strapi-advanced-uuid.uuid"
+      "customField": "plugin::strapi-advanced-uuid.uuid",
+      "options": {
+        "uuid-format": "^[A-Z0-9]{10}$"
+      }
     },
     "name": {
       "type": "string"
@@ -45,18 +48,10 @@
       "type": "biginteger",
       "default": "0"
     },
-    "stock": {
-      "type": "integer",
-      "default": 0
-    },
     "description": {
       "type": "blocks"
     },
     "total_purchase": {
-      "type": "integer",
-      "default": 0
-    },
-    "size": {
       "type": "integer",
       "default": 0
     },
@@ -76,11 +71,10 @@
     "detail_information": {
       "type": "blocks"
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "products"
+      "relation": "oneToMany",
+      "target": "api::category.category"
     },
     "children_product": {
       "type": "relation",
@@ -104,6 +98,16 @@
         "medium",
         "high"
       ]
+    },
+    "product_details": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-detail.product-detail",
+      "mappedBy": "product"
+    },
+    "total_view": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
