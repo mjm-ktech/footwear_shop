@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_details",
+  "info": {
+    "singularName": "product-detail",
+    "pluralName": "product-details",
+    "displayName": "Product detail",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "product_details"
+    },
+    "stock": {
+      "type": "integer",
+      "default": 0
+    },
+    "size": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

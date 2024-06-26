@@ -37,12 +37,6 @@
       "target": "api::category.category",
       "inversedBy": "childs"
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "category"
-    },
     "number_of_products": {
       "type": "integer",
       "default": 0
