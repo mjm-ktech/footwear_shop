@@ -768,6 +768,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     birthday: Attribute.Date;
     phone: Attribute.String;
     size: Attribute.String;
+    type: Attribute.Enumeration<['ADMIN', 'USER']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -907,6 +908,53 @@ export interface ApiColorColor extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::color.color',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCommentComment extends Schema.CollectionType {
+  collectionName: 'comments';
+  info: {
+    singularName: 'comment';
+    pluralName: 'comments';
+    displayName: 'comment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    reel: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'api::reel.reel'
+    >;
+    like: Attribute.Integer;
+    dislike: Attribute.Integer;
+    content: Attribute.String;
+    children: Attribute.Relation<
+      'api::comment.comment',
+      'oneToMany',
+      'api::comment.comment'
+    >;
+    parent: Attribute.Relation<
+      'api::comment.comment',
+      'manyToOne',
+      'api::comment.comment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comment.comment',
       'oneToOne',
       'admin::user'
     > &
@@ -1201,6 +1249,7 @@ export interface ApiReelReel extends Schema.CollectionType {
     singularName: 'reel';
     pluralName: 'reels';
     displayName: 'Reel';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1209,6 +1258,7 @@ export interface ApiReelReel extends Schema.CollectionType {
     name: Attribute.String;
     is_showed: Attribute.Boolean;
     video: Attribute.Media<'videos'>;
+    slug: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::reel.reel', 'oneToOne', 'admin::user'> &
@@ -1353,6 +1403,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::category.category': ApiCategoryCategory;
       'api::color.color': ApiColorColor;
+      'api::comment.comment': ApiCommentComment;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::order.order': ApiOrderOrder;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;

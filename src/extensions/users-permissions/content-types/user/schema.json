@@ -86,6 +86,13 @@
     },
     "size": {
       "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "ADMIN",
+        "USER"
+      ]
     }
   }
 }
