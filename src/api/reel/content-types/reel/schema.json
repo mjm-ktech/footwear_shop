@@ -4,7 +4,8 @@
   "info": {
     "singularName": "reel",
     "pluralName": "reels",
-    "displayName": "Reel"
+    "displayName": "Reel",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -18,11 +19,15 @@
       "type": "boolean"
     },
     "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
