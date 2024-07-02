@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-07-02T08:16:14.295Z"
+    "x-generation-date": "2024-07-02T08:56:19.014Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -2068,7 +2068,6 @@
                           "pattern": "^\\d*$",
                           "example": "123456789"
                         },
-                        "description": {},
                         "total_purchase": {
                           "type": "integer"
                         },
@@ -2165,7 +2164,6 @@
                         "is_parent": {
                           "type": "boolean"
                         },
-                        "detail_information": {},
                         "categories": {
                           "type": "object",
                           "properties": {
@@ -2559,6 +2557,12 @@
                         },
                         "total_view": {
                           "type": "integer"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "detail_description": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string",
@@ -5063,7 +5067,6 @@
                         "pattern": "^\\d*$",
                         "example": "123456789"
                       },
-                      "description": {},
                       "total_purchase": {
                         "type": "integer"
                       },
@@ -5160,7 +5163,6 @@
                       "is_parent": {
                         "type": "boolean"
                       },
-                      "detail_information": {},
                       "categories": {
                         "type": "object",
                         "properties": {
@@ -5317,6 +5319,12 @@
                       },
                       "total_view": {
                         "type": "integer"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "detail_description": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -7034,7 +7042,6 @@
                                     "pattern": "^\\d*$",
                                     "example": "123456789"
                                   },
-                                  "description": {},
                                   "total_purchase": {
                                     "type": "integer"
                                   },
@@ -7131,7 +7138,6 @@
                                   "is_parent": {
                                     "type": "boolean"
                                   },
-                                  "detail_information": {},
                                   "categories": {
                                     "type": "object",
                                     "properties": {
@@ -7525,6 +7531,12 @@
                                   },
                                   "total_view": {
                                     "type": "integer"
+                                  },
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "detail_description": {
+                                    "type": "string"
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -9077,7 +9089,6 @@
                                                 "pattern": "^\\d*$",
                                                 "example": "123456789"
                                               },
-                                              "description": {},
                                               "total_purchase": {
                                                 "type": "integer"
                                               },
@@ -9174,7 +9185,6 @@
                                               "is_parent": {
                                                 "type": "boolean"
                                               },
-                                              "detail_information": {},
                                               "categories": {
                                                 "type": "object",
                                                 "properties": {
@@ -9569,6 +9579,12 @@
                                               "total_view": {
                                                 "type": "integer"
                                               },
+                                              "description": {
+                                                "type": "string"
+                                              },
+                                              "detail_description": {
+                                                "type": "string"
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -9946,7 +9962,6 @@
                 "pattern": "^\\d*$",
                 "example": "123456789"
               },
-              "description": {},
               "total_purchase": {
                 "type": "integer"
               },
@@ -9968,7 +9983,6 @@
               "is_parent": {
                 "type": "boolean"
               },
-              "detail_information": {},
               "categories": {
                 "type": "array",
                 "items": {
@@ -10035,6 +10049,12 @@
               },
               "total_view": {
                 "type": "integer"
+              },
+              "description": {
+                "type": "string"
+              },
+              "detail_description": {
+                "type": "string"
               }
             }
           }
@@ -10869,7 +10889,6 @@
             "pattern": "^\\d*$",
             "example": "123456789"
           },
-          "description": {},
           "total_purchase": {
             "type": "integer"
           },
@@ -11206,7 +11225,6 @@
                                       "pattern": "^\\d*$",
                                       "example": "123456789"
                                     },
-                                    "description": {},
                                     "total_purchase": {
                                       "type": "integer"
                                     },
@@ -11234,7 +11252,6 @@
                                     "is_parent": {
                                       "type": "boolean"
                                     },
-                                    "detail_information": {},
                                     "categories": {
                                       "type": "object",
                                       "properties": {
@@ -11629,6 +11646,12 @@
                                     "total_view": {
                                       "type": "integer"
                                     },
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "detail_description": {
+                                      "type": "string"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -11729,7 +11752,6 @@
           "is_parent": {
             "type": "boolean"
           },
-          "detail_information": {},
           "categories": {
             "type": "object",
             "properties": {
@@ -11820,6 +11842,12 @@
           },
           "total_view": {
             "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail_description": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -12758,7 +12786,6 @@
                         "pattern": "^\\d*$",
                         "example": "123456789"
                       },
-                      "description": {},
                       "total_purchase": {
                         "type": "integer"
                       },
@@ -12855,7 +12882,6 @@
                       "is_parent": {
                         "type": "boolean"
                       },
-                      "detail_information": {},
                       "categories": {
                         "type": "object",
                         "properties": {
@@ -13249,6 +13275,12 @@
                       },
                       "total_view": {
                         "type": "integer"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "detail_description": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -15511,7 +15543,6 @@
                                                 "pattern": "^\\d*$",
                                                 "example": "123456789"
                                               },
-                                              "description": {},
                                               "total_purchase": {
                                                 "type": "integer"
                                               },
@@ -15608,7 +15639,6 @@
                                               "is_parent": {
                                                 "type": "boolean"
                                               },
-                                              "detail_information": {},
                                               "categories": {
                                                 "type": "object",
                                                 "properties": {
@@ -16002,6 +16032,12 @@
                                               },
                                               "total_view": {
                                                 "type": "integer"
+                                              },
+                                              "description": {
+                                                "type": "string"
+                                              },
+                                              "detail_description": {
+                                                "type": "string"
                                               },
                                               "createdAt": {
                                                 "type": "string",
@@ -17916,7 +17952,6 @@
                         "pattern": "^\\d*$",
                         "example": "123456789"
                       },
-                      "description": {},
                       "total_purchase": {
                         "type": "integer"
                       },
@@ -18013,7 +18048,6 @@
                       "is_parent": {
                         "type": "boolean"
                       },
-                      "detail_information": {},
                       "categories": {
                         "type": "object",
                         "properties": {
@@ -18407,6 +18441,12 @@
                       },
                       "total_view": {
                         "type": "integer"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "detail_description": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
