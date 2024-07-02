@@ -1157,7 +1157,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     gallery: Attribute.Media<'images' | 'videos', true>;
     price: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     promotion_price: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
-    description: Attribute.Blocks;
     total_purchase: Attribute.Integer & Attribute.DefaultTo<0>;
     height: Attribute.Float;
     color: Attribute.Relation<
@@ -1166,7 +1165,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::color.color'
     >;
     is_parent: Attribute.Boolean & Attribute.DefaultTo<false>;
-    detail_information: Attribute.Blocks;
     categories: Attribute.Relation<
       'api::product.product',
       'oneToMany',
@@ -1190,6 +1188,20 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product-detail.product-detail'
     >;
     total_view: Attribute.Integer & Attribute.DefaultTo<0>;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    detail_description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

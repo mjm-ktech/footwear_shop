@@ -48,9 +48,6 @@
       "type": "biginteger",
       "default": "0"
     },
-    "description": {
-      "type": "blocks"
-    },
     "total_purchase": {
       "type": "integer",
       "default": 0
@@ -67,9 +64,6 @@
     "is_parent": {
       "type": "boolean",
       "default": false
-    },
-    "detail_information": {
-      "type": "blocks"
     },
     "categories": {
       "type": "relation",
@@ -108,6 +102,20 @@
     "total_view": {
       "type": "integer",
       "default": 0
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "detail_description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     }
   }
 }
