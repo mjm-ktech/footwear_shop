@@ -1,7 +1,16 @@
 export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
-  'strapi::cors',
+
+  {
+    name: 'strapi::cors',
+    config: {
+      headers: '*',
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      credentials: false
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
