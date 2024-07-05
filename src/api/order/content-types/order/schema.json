@@ -81,9 +81,9 @@
       "relation": "oneToOne",
       "target": "api::voucher.voucher"
     },
-    "order_detail": {
+    "order_details": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::order-detail.order-detail",
       "mappedBy": "order"
     },

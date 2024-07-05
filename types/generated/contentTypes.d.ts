@@ -1059,9 +1059,9 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'oneToOne',
       'api::voucher.voucher'
     >;
-    order_detail: Attribute.Relation<
+    order_details: Attribute.Relation<
       'api::order.order',
-      'oneToOne',
+      'oneToMany',
       'api::order-detail.order-detail'
     >;
     transaction: Attribute.Relation<
@@ -1100,15 +1100,15 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
     quantity: Attribute.Integer & Attribute.DefaultTo<0>;
     unit_price: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     note: Attribute.Text;
-    order: Attribute.Relation<
-      'api::order-detail.order-detail',
-      'oneToOne',
-      'api::order.order'
-    >;
     product: Attribute.Relation<
       'api::order-detail.order-detail',
       'oneToOne',
       'api::product.product'
+    >;
+    order: Attribute.Relation<
+      'api::order-detail.order-detail',
+      'manyToOne',
+      'api::order.order'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
