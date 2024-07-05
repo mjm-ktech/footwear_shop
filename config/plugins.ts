@@ -39,6 +39,14 @@ export default ({ env }) => ({
             locale: 'vi',
           },
         },
+        reel: {
+          field: 'slug',
+          references: 'name',
+          options: {
+            locale: 'vi',
+          },
+        },
+
       },
     },
   },
