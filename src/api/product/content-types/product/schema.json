@@ -67,8 +67,9 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category"
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
     },
     "children_product": {
       "type": "relation",

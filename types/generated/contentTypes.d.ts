@@ -861,6 +861,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >;
     number_of_products: Attribute.Integer & Attribute.DefaultTo<0>;
     images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1167,7 +1172,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     is_parent: Attribute.Boolean & Attribute.DefaultTo<false>;
     categories: Attribute.Relation<
       'api::product.product',
-      'oneToMany',
+      'manyToMany',
       'api::category.category'
     >;
     children_product: Attribute.Relation<
