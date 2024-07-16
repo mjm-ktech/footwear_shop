@@ -1061,7 +1061,8 @@ export interface ApiOrderOrder extends Schema.CollectionType {
         'RETURNED',
         'CANCEL'
       ]
-    >;
+    > &
+      Attribute.DefaultTo<'WAIT_CONFIRM'>;
     customer_full_name: Attribute.String;
     voucher: Attribute.Relation<
       'api::order.order',
@@ -1101,6 +1102,7 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
     singularName: 'order-detail';
     pluralName: 'order-details';
     displayName: 'Order detail';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1119,6 +1121,7 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
       'manyToOne',
       'api::order.order'
     >;
+    size: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
