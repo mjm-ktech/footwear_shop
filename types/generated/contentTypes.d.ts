@@ -768,7 +768,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     birthday: Attribute.Date;
     phone: Attribute.String;
     size: Attribute.String;
-    type: Attribute.Enumeration<['ADMIN', 'USER']>;
+    type: Attribute.Enumeration<['ADMIN', 'USER']> &
+      Attribute.DefaultTo<'USER'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

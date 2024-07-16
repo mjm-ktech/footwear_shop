@@ -3,8 +3,8 @@
  */
 import utils from "@strapi/utils";
 const { ApplicationError, ValidationError, ForbiddenError } = utils.errors;
-import { factories } from '@strapi/strapi'
-export default factories.createCoreController('api::order.order', ({strapi}) => ({
+import { factories } from '@strapi/strapi';
+export default factories.createCoreController('api::order.order', ({ strapi }) => ({
   async create(ctx) {
     try {
       const { id } = ctx.state.user;
