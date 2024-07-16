@@ -32,16 +32,18 @@
       "type": "enumeration",
       "enum": [
         "Giao hàng nhanh",
-        "Giao hàng tiết kiệm"
-      ]
+        "Giao hàng tiết kiệm",
+        "Giao hàng tiêu chuẩn"
+      ],
+      "default": "Giao hàng tiêu chuẩn"
     },
     "payment_method": {
       "type": "enumeration",
       "enum": [
-        "Trả khi nhận hàng",
+        "COD",
         "VNPAY"
       ],
-      "default": "Trả khi nhận hàng"
+      "default": "COD"
     },
     "total": {
       "type": "biginteger",
