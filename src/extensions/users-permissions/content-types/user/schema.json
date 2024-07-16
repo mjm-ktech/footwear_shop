@@ -92,7 +92,8 @@
       "enum": [
         "ADMIN",
         "USER"
-      ]
+      ],
+      "default": "USER"
     }
   }
 }
