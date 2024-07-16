@@ -1031,12 +1031,15 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     customer_phone: Attribute.String;
     customer_address: Attribute.String;
     shipping_method: Attribute.Enumeration<
-      ['Giao h\u00E0ng nhanh', 'Giao h\u00E0ng ti\u1EBFt ki\u1EC7m']
-    >;
-    payment_method: Attribute.Enumeration<
-      ['Tr\u1EA3 khi nh\u1EADn h\u00E0ng', 'VNPAY']
+      [
+        'Giao h\u00E0ng nhanh',
+        'Giao h\u00E0ng ti\u1EBFt ki\u1EC7m',
+        'Giao h\u00E0ng ti\u00EAu chu\u1EA9n'
+      ]
     > &
-      Attribute.DefaultTo<'Tr\u1EA3 khi nh\u1EADn h\u00E0ng'>;
+      Attribute.DefaultTo<'Giao h\u00E0ng ti\u00EAu chu\u1EA9n'>;
+    payment_method: Attribute.Enumeration<['COD', 'VNPAY']> &
+      Attribute.DefaultTo<'COD'>;
     total: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     transport_fee: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     user: Attribute.Relation<
