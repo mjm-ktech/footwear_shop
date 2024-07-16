@@ -4,59 +4,69 @@
 import utils from "@strapi/utils";
 const { ApplicationError, ValidationError, ForbiddenError } = utils.errors;
 import { factories } from '@strapi/strapi';
+import { debug } from "../../../utils/index";
+const TRANSPORT_FEE = process.env.TRANSPORT_FEE || 0;
 export default factories.createCoreController('api::order.order', ({ strapi }) => ({
   async create(ctx) {
     try {
-      const { id } = ctx.state.user;
-      strapi.log.info(`start create order with user: ${id}`);
       const body = ctx.request.body.data;
       const { items, voucher } = ctx.request.body.data;
-
-      if (!id) {
-        return ctx.badRequest(
-          "not_login",
-          "need to login to using this feature"
-        );
-      }
-
-      let errorItems = [];
-      body.total = 0;
-      let totalDiscount = 0;
-
-      if (errorItems.length > 0) {
-        throw new ValidationError(
-          `product not found with id ${errorItems}`,
-          "Bad request"
-        );
-      }
       delete body.items;
-      body.user = {
-        id: id,
-      };
+      let errors = [];
+      let total = 0;
+      if (items.length === 0) {
+        throw new ValidationError("items is required");
+      }
+      if (voucher.id){
+        const checkVoucher = await strapi.entityService.findOne("api::voucher.voucher", voucher.id);
+        if (!checkVoucher) {
+          throw new ValidationError("voucher not found");
+        }
+      }
+      await Promise.all(items.map(async (item) => {
+        const productDetail = await strapi.entityService.findOne("api::product-detail.product-detail", item.product_detail_id, {
+          populate: {
+            product: true
+          }
+        });
+        if (!productDetail) {
+          errors.push(item.product_detail_id);
+        }
+        if (productDetail) {
+          total += Number(productDetail.product.promotion_price || productDetail.product.price || 0) * item.quantity;
+        }
+      }));
+      total += Number(TRANSPORT_FEE);
+      body.total = total;
+      body.transport_fee = Number(TRANSPORT_FEE);
 
-      // phi van chuyen mac dinh
-      body.total += 35000;
-      body.discount = totalDiscount;
+      if (errors.length > 0) {
+        throw new ValidationError(`product_detail_id: ${errors} not found`);
+      }
+
       const order = await strapi.entityService.create("api::order.order", {
-        data: body,
+        data: {
+          ...body
+        }
       });
 
-      items.map(async (item) => {
-        await strapi.entityService.create(
-          "api::product-detail.product-detail",
-          {
-            data: {
-              order: {
-                id: order.id,
-              },
-              product: {
-                id: item.product_id,
-              },
-              quanity: item.quanity,
-              unit_price: item.unit_price,
-            },
+      items.map(async(item)=> {
+        const productDetail = await strapi.entityService.findOne("api::product-detail.product-detail", item.product_detail_id, {
+          populate: {
+            product: true
           }
-        );
+        });
+        await strapi.entityService.create("api::order-detail.order-detail", {
+          data: {
+            order: order.id,
+            product: {
+              id: productDetail.product.id
+            },
+            quantity: item.quantity,
+            unit_price: productDetail.product.promotion_price || productDetail.product.price,
+            size: productDetail.size
+          }
+        });
       });
       return {
         order: order
@@ -66,9 +76,4 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
       return ctx.badRequest(e.message);
     }
   },
-
-
-
-
-
 }));
