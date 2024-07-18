@@ -28,6 +28,10 @@
     },
     "slug": {
       "type": "string"
+    },
+    "like": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
