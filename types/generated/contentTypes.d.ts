@@ -1283,11 +1283,52 @@ export interface ApiReelReel extends Schema.CollectionType {
     is_showed: Attribute.Boolean;
     video: Attribute.Media<'videos'>;
     slug: Attribute.String;
+    like: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::reel.reel', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::reel.reel', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReelActivityReelActivity extends Schema.CollectionType {
+  collectionName: 'reel_activities';
+  info: {
+    singularName: 'reel-activity';
+    pluralName: 'reel-activities';
+    displayName: 'reel_activity';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::reel-activity.reel-activity',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    reel: Attribute.Relation<
+      'api::reel-activity.reel-activity',
+      'oneToOne',
+      'api::reel.reel'
+    >;
+    status: Attribute.Boolean & Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reel-activity.reel-activity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reel-activity.reel-activity',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1434,6 +1475,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::product-detail.product-detail': ApiProductDetailProductDetail;
       'api::reel.reel': ApiReelReel;
+      'api::reel-activity.reel-activity': ApiReelActivityReelActivity;
       'api::transaction.transaction': ApiTransactionTransaction;
       'api::voucher.voucher': ApiVoucherVoucher;
       'api::wishlist.wishlist': ApiWishlistWishlist;

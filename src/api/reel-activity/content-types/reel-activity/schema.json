@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reel_activities",
+  "info": {
+    "singularName": "reel-activity",
+    "pluralName": "reel-activities",
+    "displayName": "reel_activity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "reel": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::reel.reel"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
