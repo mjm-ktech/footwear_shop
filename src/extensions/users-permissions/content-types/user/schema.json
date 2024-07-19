@@ -94,6 +94,9 @@
         "USER"
       ],
       "default": "USER"
+    },
+    "address": {
+      "type": "text"
     }
   }
 }
