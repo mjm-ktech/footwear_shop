@@ -56,7 +56,7 @@ export default ({ env }) => ({
         expiresIn: '7d',
       },
       register: {
-        allowedFields:["first_name", "last_name", "username", "gender", "birthday", "phone", "size"],
+        allowedFields:["first_name", "last_name", "username", "gender", "birthday", "phone", "size", "address"],
       }
     },
   },

@@ -770,6 +770,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     size: Attribute.String;
     type: Attribute.Enumeration<['ADMIN', 'USER']> &
       Attribute.DefaultTo<'USER'>;
+    address: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
