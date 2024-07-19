@@ -3,7 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi";
-
+import { debug } from "../../../utils";
 export default factories.createCoreController(
   "api::voucher.voucher",
   ({ strapi }) => ({
@@ -21,6 +21,9 @@ export default factories.createCoreController(
           },
         }
       );
+      if(voucher.length === 0) {
+        return { id: null, status: false };
+      }
       if (voucher.length > 0 && voucher[0].expiry_date > new Date() || voucher.length > 0 && voucher[0].expiry_date === null) {
         return {
           id: voucher[0].id,
