@@ -29,10 +29,9 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
           errors.push(item.product_detail_id);
         }
         if (productDetail) {
-          total += Number(productDetail.product.promotion_price || productDetail.product.price || 0) * item.quantity;
+          total += (Number(( Number(productDetail.product.promotion_price) === 0 || !productDetail.product.promotion_price) ? productDetail.product.price : productDetail.product.promotion_price ) || 0) * item.quantity;
         }
       }));
-      total += Number(TRANSPORT_FEE);
       if (voucher.id){
         const checkVoucher = await strapi.entityService.findOne("api::voucher.voucher", voucher.id);
         if (!checkVoucher) {
@@ -48,6 +47,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
           discount = Number(reduceAmount);
         }
       }
+      total += Number(TRANSPORT_FEE);
       body.total = total - discount;
       body.transport_fee = Number(TRANSPORT_FEE);
 
