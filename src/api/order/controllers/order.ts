@@ -17,10 +17,21 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
       if (items.length === 0) {
         throw new ValidationError("items is required");
       }
+      let discount = 0;
+
       if (voucher.id){
         const checkVoucher = await strapi.entityService.findOne("api::voucher.voucher", voucher.id);
         if (!checkVoucher) {
           throw new ValidationError("voucher not found");
+        }
+        const reducePercent = checkVoucher?.percent_decrease || 0;
+
+        const reduceAmount = checkVoucher?.amount_decrease || 0;
+
+        if (reducePercent > 0) {
+          discount = (body.total * reducePercent) / 100;
+        } else {
+          discount = Number(reduceAmount);
         }
       }
       await Promise.all(items.map(async (item) => {
@@ -37,7 +48,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
         }
       }));
       total += Number(TRANSPORT_FEE);
-      body.total = total;
+      body.total = total - discount;
       body.transport_fee = Number(TRANSPORT_FEE);
 
       if (errors.length > 0) {
