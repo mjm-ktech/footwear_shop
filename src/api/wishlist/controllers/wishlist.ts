@@ -8,7 +8,7 @@ export default factories.createCoreController(
   "api::wishlist.wishlist",
   ({ strapi }) => ({
     async create(ctx) {
-      const { product_id } = ctx.request.body;
+      const { product_detail_id } = ctx.request.body;
       const { id } = ctx?.state?.user || {};
       if (!id) {
         return ctx.badRequest(
@@ -16,18 +16,18 @@ export default factories.createCoreController(
           "need to login to using this feature"
         );
       }
-      if (!product_id) {
+      if (!product_detail_id) {
         return ctx.badRequest(
           "product_id_is_required",
           "product_id is required"
         );
       }
       const product = await strapi.entityService.findOne(
-        "api::product.product",
-        product_id
+        "api::product-detail.product-detail",
+        product_detail_id
       );
       if (!product) {
-        return ctx.badRequest("product_not_found", "product not found");
+        return ctx.badRequest("product_detail_not_found", "product detail not found");
       }
       const wishList = await strapi.entityService.findMany(
         "api::wishlist.wishlist",
@@ -36,8 +36,8 @@ export default factories.createCoreController(
             user: {
               id: id,
             },
-            product: {
-              id: product_id,
+            product_detail: {
+              id: product_detail_id,
             },
           },
         }
@@ -55,8 +55,8 @@ export default factories.createCoreController(
             user: {
               id: id,
             },
-            product: {
-              id: product_id,
+            product_detail: {
+              id: product_detail_id,
             },
           },
         }
