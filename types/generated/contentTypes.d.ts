@@ -1426,10 +1426,10 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    product: Attribute.Relation<
+    product_detail: Attribute.Relation<
       'api::wishlist.wishlist',
       'oneToOne',
-      'api::product.product'
+      'api::product-detail.product-detail'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
