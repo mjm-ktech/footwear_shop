@@ -44,8 +44,10 @@ export default factories.createCoreController(
                             avatar: {
                               fields: ["caption", "url"],
                             },
+                            color: true
                           },
                         },
+                        color: true
                       },
                     },
                   },
@@ -58,13 +60,31 @@ export default factories.createCoreController(
             special_product: {
               populate: {
                 product: {
+                  filter: {
+                    isShow: true,
+                    is_parent: true,
+                  },
                   populate: {
+                    children_product: {
+                      fields: ["name", "slug", "price", "promotion_price"],
+                      filter: {
+                        isShow: true,
+                        is_parent: false,
+                      },
+                      populate: {
+                        avatar: {
+                          fields: ["caption", "url"],
+                        },
+                        color: true
+                      },
+                    },
                     avatar: {
                       fields: ["caption", "url"],
                     },
                     gallery: {
                       fields: ["caption", "url"],
                     },
+                    color: true
                   },
                 },
               },
