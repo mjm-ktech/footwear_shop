@@ -14,5 +14,21 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap(/*{ strapi }*/) {},
+  bootstrap({ strapi }) {
+    strapi.db.lifecycles.subscribe({
+      models: ["plugin::users-permissions.user"],
+      async afterCreate(event) {
+        const { result, params } = event;
+        const { name, id } = result;
+        await strapi.entityService.create("api::notification.notification",
+          {
+            data: {
+              user: {
+                id: id
+              }
+            }
+          });
+      }
+    });
+  },
 };
