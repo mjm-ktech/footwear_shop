@@ -20,7 +20,9 @@
       }
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     },
     "avatar": {
       "type": "media",
@@ -84,7 +86,8 @@
       "inversedBy": "children_product"
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "height_type": {
       "type": "enumeration",

@@ -1204,7 +1204,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
           'uuid-format': '^[A-Z0-9]{10}$';
         }
       >;
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     avatar: Attribute.Media<'images' | 'videos'>;
     gallery: Attribute.Media<'images' | 'videos', true>;
     price: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
@@ -1232,7 +1232,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::product.product'
     >;
-    slug: Attribute.String;
+    slug: Attribute.String & Attribute.Unique;
     height_type: Attribute.Enumeration<['low', 'medium', 'high']>;
     product_details: Attribute.Relation<
       'api::product.product',
