@@ -37,6 +37,11 @@
       "relation": "manyToOne",
       "target": "api::comment.comment",
       "inversedBy": "children"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
