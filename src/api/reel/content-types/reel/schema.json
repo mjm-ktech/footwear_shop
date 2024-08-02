@@ -32,6 +32,10 @@
     "like": {
       "type": "integer",
       "default": 0
+    },
+    "total_comment": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }
