@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-08-02T03:20:20.771Z"
+    "x-generation-date": "2024-08-02T05:00:08.259Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -4115,6 +4115,11 @@
                       },
                       "like": {
                         "type": "integer"
+                      },
+                      "total_comment": {
+                        "type": "string",
+                        "pattern": "^\\d*$",
+                        "example": "123456789"
                       },
                       "createdAt": {
                         "type": "string",
@@ -16773,6 +16778,11 @@
               },
               "like": {
                 "type": "integer"
+              },
+              "total_comment": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
               }
             }
           }
@@ -17460,6 +17470,11 @@
           },
           "like": {
             "type": "integer"
+          },
+          "total_comment": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
           },
           "createdAt": {
             "type": "string",
@@ -18546,6 +18561,11 @@
                       },
                       "like": {
                         "type": "integer"
+                      },
+                      "total_comment": {
+                        "type": "string",
+                        "pattern": "^\\d*$",
+                        "example": "123456789"
                       },
                       "createdAt": {
                         "type": "string",

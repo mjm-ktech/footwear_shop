@@ -1329,6 +1329,7 @@ export interface ApiReelReel extends Schema.CollectionType {
     video: Attribute.Media<'videos'>;
     slug: Attribute.String;
     like: Attribute.Integer & Attribute.DefaultTo<0>;
+    total_comment: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::reel.reel', 'oneToOne', 'admin::user'> &
