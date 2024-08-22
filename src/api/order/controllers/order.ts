@@ -73,7 +73,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
               id: productDetail.product.id
             },
             quantity: item.quantity,
-            unit_price: productDetail.product.promotion_price || productDetail.product.price,
+            unit_price: (Number(productDetail.product.promotion_price) === 0 || !productDetail.product.promotion_price) ? productDetail.product.price: Number(productDetail.product.promotion_price),
             size: productDetail.size
           }
         });
