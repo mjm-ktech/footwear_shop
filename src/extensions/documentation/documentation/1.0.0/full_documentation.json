@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-08-02T06:49:28.408Z"
+    "x-generation-date": "2024-08-29T04:13:20.559Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -4725,6 +4725,18 @@
                 "items": {
                   "$ref": "#/components/schemas/SpecialProductSpecialProductComponent"
                 }
+              },
+              "best_selling": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/BestSellingBestSellingComponent"
+                }
+              },
+              "sale_product": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/BestSellingSaleProductComponent"
+                }
               }
             }
           }
@@ -5414,6 +5426,18 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SpecialProductSpecialProductComponent"
+            }
+          },
+          "best_selling": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BestSellingBestSellingComponent"
+            }
+          },
+          "sale_product": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BestSellingSaleProductComponent"
             }
           },
           "createdAt": {
@@ -6368,6 +6392,56 @@
         }
       },
       "SpecialProductSpecialProductComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "product": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "BestSellingBestSellingComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "product": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "BestSellingSaleProductComponent": {
         "type": "object",
         "properties": {
           "id": {
