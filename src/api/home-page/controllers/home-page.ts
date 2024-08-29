@@ -89,6 +89,70 @@ export default factories.createCoreController(
                 },
               },
             },
+            best_selling: {
+              populate: {
+                product: {
+                  filter: {
+                    isShow: true,
+                    is_parent: true,
+                  },
+                  populate: {
+                    children_product: {
+                      fields: ["name", "slug", "price", "promotion_price"],
+                      filter: {
+                        isShow: true,
+                        is_parent: false,
+                      },
+                      populate: {
+                        avatar: {
+                          fields: ["caption", "url"],
+                        },
+                        color: true
+                      },
+                    },
+                    avatar: {
+                      fields: ["caption", "url"],
+                    },
+                    gallery: {
+                      fields: ["caption", "url"],
+                    },
+                    color: true
+                  },
+                },
+              },
+            },
+            sale_product: {
+              populate: {
+                product: {
+                  filter: {
+                    isShow: true,
+                    is_parent: true,
+                  },
+                  populate: {
+                    children_product: {
+                      fields: ["name", "slug", "price", "promotion_price"],
+                      filter: {
+                        isShow: true,
+                        is_parent: false,
+                      },
+                      populate: {
+                        avatar: {
+                          fields: ["caption", "url"],
+                        },
+                        color: true
+                      },
+                    },
+                    avatar: {
+                      fields: ["caption", "url"],
+                    },
+                    gallery: {
+                      fields: ["caption", "url"],
+                    },
+                    color: true
+                  },
+                },
+              },
+            },
           },
         }
       );
