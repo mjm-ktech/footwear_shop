@@ -980,6 +980,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     singularName: 'home-page';
     pluralName: 'home-pages';
     displayName: 'Home page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -991,6 +992,8 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       'special-product.special-product',
       true
     >;
+    best_selling: Attribute.Component<'best-selling.best-selling', true>;
+    sale_product: Attribute.Component<'best-selling.sale-product', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
