@@ -1,3 +1,4 @@
+import { debug } from '../../../../utils'
 export default {
   async afterCreate(event) {
     const { result, params } = event;
@@ -22,5 +23,12 @@ export default {
     })
     // do something to the result;
   },
+  async afterFindOne(event) {
+    const { result } = event;
+    let { id } = result;
+    await strapi.db.connection('products')
+            .where({id:id})
+            .increment('total_view', 1);
+  }
 
 }
