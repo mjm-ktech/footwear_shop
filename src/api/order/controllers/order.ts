@@ -59,7 +59,20 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
           ...body
         }
       });
-
+      let checkResult = [];
+      await Promise.all(items.map(async (item) => {
+        const productDetail = await strapi.entityService.findOne("api::product-detail.product-detail", item.product_detail_id, {
+          populate: {
+            product: true
+          }
+        })
+        if (item.quantity > productDetail.stock) {
+          checkResult.push(` ${productDetail.product.name} - size: ${productDetail.size} - stock: ${productDetail.stock} `);
+        }
+      }));
+      if (checkResult.length > 0) {
+        return ctx.badRequest(`Các sản phẩm: ${checkResult} không đủ hàng`);
+      }
       items.map(async(item)=> {
         const productDetail = await strapi.entityService.findOne("api::product-detail.product-detail", item.product_detail_id, {
           populate: {
