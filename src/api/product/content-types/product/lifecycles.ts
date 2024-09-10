@@ -31,13 +31,5 @@ export default {
       });
     }
     // do something to the result;
-  },
-  async afterFindOne(event) {
-    const { result } = event;
-    let { id } = result;
-    await strapi.db.connection('products')
-            .where({id:id})
-            .increment('total_view', 1);
   }
-
 }
