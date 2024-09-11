@@ -24,13 +24,13 @@ export default factories.createCoreController(
       if(voucher.length === 0) {
         return { id: null, status: false };
       }
-      if ((voucher.length > 0 && voucher[0].expiry_date > new Date() )|| (voucher.length > 0 && voucher[0].expiry_date === null)) {
+      if ((voucher.length > 0 && new Date(voucher[0].expiry_date) > new Date() )|| (voucher.length > 0 && voucher[0].expiry_date === null)) {
         return {
-          id: voucher[0].id,
+          voucher: voucher[0],
           status: true,
         };
       } else {
-        return { id: voucher[0].id, status: false };
+        return { voucher: voucher[0], status: false };
       }
     },
   })
