@@ -1,0 +1,35 @@
+version: "3.1"
+services:
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    restart: always
+    volumes:
+      - meilisearch:/staging_footwear_shop/meili_data
+    ports:
+      - 7703:7700
+  postgres:
+    image: postgres:latest
+    container_name: staging_footwear_shop_postgres_data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-staging_footwear_shop}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-Admin@123}
+      - POSTGRES_DB=${POSTGRES_DB:-staging_footwear_shop}
+    volumes:
+      - postgres_data:/var/lib/postgresql/staging_footwear_shop_postgres_data/data
+    ports:
+      - "5456:5432"
+    restart: always
+  # redis:
+  #   image: 'bitnami/redis:latest'
+  #   environment:
+  #     - ALLOW_EMPTY_PASSWORD=yes
+  #   ports:
+  #     - "6379:6379"
+volumes:
+  meilisearch:
+  postgres_data:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
