@@ -4,20 +4,20 @@ services:
     image: getmeili/meilisearch:latest
     restart: always
     volumes:
-      - meilisearch:/footwear_shop/meili_data
+      - meilisearch:/staging_footwear_shop/meili_data
     ports:
-      - 7701:7700
+      - 7703:7700
   postgres:
     image: postgres:latest
-    container_name: footwear_shop_postgres
+    container_name: staging_footwear_shop_database
     environment:
-      - POSTGRES_USER=${POSTGRES_USER:-footwear_shop}
+      - POSTGRES_USER=${POSTGRES_USER:-staging_footwear_shop}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-Admin@123}
-      - POSTGRES_DB=${POSTGRES_DB:-footwear_shop_database}
+      - POSTGRES_DB=${POSTGRES_DB:-staging_footwear_shop}
     volumes:
-      - postgres_data:/var/lib/postgresql/footwear_shop_database/data
+      - postgres_data:/var/lib/postgresql/staging_footwear_shop_database/data
     ports:
-      - "5455:5432"
+      - "5456:5432"
     restart: always
   # redis:
   #   image: 'bitnami/redis:latest'
