@@ -9,13 +9,13 @@ services:
       - 7703:7700
   postgres:
     image: postgres:latest
-    container_name: staging_footwear_shop_database
+    container_name: staging_footwear_shop_postgres_data
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-staging_footwear_shop}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-Admin@123}
       - POSTGRES_DB=${POSTGRES_DB:-staging_footwear_shop}
     volumes:
-      - postgres_data:/var/lib/postgresql/staging_footwear_shop_database/data
+      - postgres_data:/var/lib/postgresql/staging_footwear_shop_postgres_data/data
     ports:
       - "5456:5432"
     restart: always
