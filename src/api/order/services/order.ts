@@ -58,5 +58,22 @@ export default factories.createCoreService('api::order.order', ({ strapi }) => (
     }));
     return true;
 
+  },
+  async countOrderByDay(total) {
+    // check user already bought this order
+    const overView = await strapi.entityService.findMany(
+      "api::overview.overview",
+      {
+        sort: {
+          createdAt: "desc",
+        },
+        limit: 1,
+      }
+    );
+      return await strapi.db
+        .connection("overviews")
+        .where({ id: overView[0].id })
+        .increment("total_order", 1)
+        .increment("total_revenue", total)
   }
 }));

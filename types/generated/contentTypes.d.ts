@@ -1187,6 +1187,38 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
   };
 }
 
+export interface ApiOverviewOverview extends Schema.CollectionType {
+  collectionName: 'overviews';
+  info: {
+    singularName: 'overview';
+    pluralName: 'overviews';
+    displayName: 'overview';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    total_order: Attribute.Integer & Attribute.DefaultTo<0>;
+    total_revenue: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    number_of_new_customer: Attribute.Integer & Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::overview.overview',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::overview.overview',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1522,6 +1554,7 @@ declare module '@strapi/types' {
       'api::notification.notification': ApiNotificationNotification;
       'api::order.order': ApiOrderOrder;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
+      'api::overview.overview': ApiOverviewOverview;
       'api::product.product': ApiProductProduct;
       'api::product-detail.product-detail': ApiProductDetailProductDetail;
       'api::reel.reel': ApiReelReel;

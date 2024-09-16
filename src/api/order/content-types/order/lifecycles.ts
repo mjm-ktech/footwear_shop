@@ -1,3 +1,4 @@
+import { debug } from "../../../../utils"
 export default {
   async afterCreate(event) {
     try {
@@ -19,11 +20,10 @@ export default {
   async afterUpdate(event) {
     try {
       const { result, params } = event;
-      const { name, id, status } = result;
+      const { name, id, status, total } = result;
       if (status === "CONFIRM") {
-        console.log("CONFIRM");
+        await strapi.services["api::order.order"].countOrderByDay(total);
         const check = await strapi.services["api::order.order"].reduceStockForProduct(id);
-        console.log("🚀 ~ afterUpdate ~ check:", check)
 
         if (!check) {
           await strapi.entityService.update("api::order.order", id, {
@@ -31,6 +31,25 @@ export default {
               status: "CANCEL",
               reason: "Không đủ số lượng sản phẩm"
             }
+          })
+        } else {
+          const order = await strapi.entityService.findOne("api::order.order", id, {
+            populate: {
+              order_details: {
+                populate: {
+                  product: true
+                }
+              }
+            }
+          });
+
+          const { order_details } = order;
+
+          order_details.map(async (order_detail) => {
+            await strapi.db
+            .connection("products")
+            .where({ id: order_detail.product.id })
+            .increment("total_purchase", 1);
           })
         }
       }
