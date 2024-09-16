@@ -32,7 +32,6 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
           total += (Number(( Number(productDetail.product.promotion_price) === 0 || !productDetail.product.promotion_price) ? productDetail.product.price : productDetail.product.promotion_price ) || 0) * item.quantity;
         }
       }));
-      console.log("hello");
       if (voucher.id){
         const checkVoucher = await strapi.entityService.findOne("api::voucher.voucher", voucher.id);
         if (!checkVoucher) {
