@@ -1,3 +1,5 @@
+import cronTasks from './cron-tasks';
+
 export default ({ env }) => ({
   url: env("PUBLIC_URL", "http://localhost:1337"),
   host: env('HOST', '0.0.0.0'),
@@ -7,5 +9,9 @@ export default ({ env }) => ({
   },
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
+  },
+  cron: {
+    enabled: env.bool('CRON_ENABLED', false),
+    tasks: cronTasks
   },
 });

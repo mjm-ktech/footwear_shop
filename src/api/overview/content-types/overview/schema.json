@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "overviews",
+  "info": {
+    "singularName": "overview",
+    "pluralName": "overviews",
+    "displayName": "overview",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "total_order": {
+      "type": "integer",
+      "default": 0
+    },
+    "total_revenue": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "number_of_new_customer": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -32,6 +32,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
           total += (Number(( Number(productDetail.product.promotion_price) === 0 || !productDetail.product.promotion_price) ? productDetail.product.price : productDetail.product.promotion_price ) || 0) * item.quantity;
         }
       }));
+      console.log("hello");
       if (voucher.id){
         const checkVoucher = await strapi.entityService.findOne("api::voucher.voucher", voucher.id);
         if (!checkVoucher) {
@@ -73,6 +74,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
       if (checkResult.length > 0) {
         return ctx.badRequest(`Các sản phẩm: ${checkResult} không đủ hàng`);
       }
+      console.log("jello 1");
       items.map(async(item)=> {
         const productDetail = await strapi.entityService.findOne("api::product-detail.product-detail", item.product_detail_id, {
           populate: {
