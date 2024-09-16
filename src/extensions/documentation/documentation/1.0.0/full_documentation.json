@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-16T07:40:39.396Z"
+    "x-generation-date": "2024-09-16T08:23:40.048Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -1492,6 +1492,11 @@
                                       },
                                       "detail_description": {
                                         "type": "string"
+                                      },
+                                      "total_revenue": {
+                                        "type": "string",
+                                        "pattern": "^\\d*$",
+                                        "example": "123456789"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -3236,6 +3241,11 @@
                         },
                         "detail_description": {
                           "type": "string"
+                        },
+                        "total_revenue": {
+                          "type": "string",
+                          "pattern": "^\\d*$",
+                          "example": "123456789"
                         },
                         "createdAt": {
                           "type": "string",
@@ -6292,6 +6302,11 @@
                                     "detail_description": {
                                       "type": "string"
                                     },
+                                    "total_revenue": {
+                                      "type": "string",
+                                      "pattern": "^\\d*$",
+                                      "example": "123456789"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -8323,6 +8338,11 @@
                                                 },
                                                 "detail_description": {
                                                   "type": "string"
+                                                },
+                                                "total_revenue": {
+                                                  "type": "string",
+                                                  "pattern": "^\\d*$",
+                                                  "example": "123456789"
                                                 },
                                                 "createdAt": {
                                                   "type": "string",
@@ -10600,6 +10620,11 @@
                                     "detail_description": {
                                       "type": "string"
                                     },
+                                    "total_revenue": {
+                                      "type": "string",
+                                      "pattern": "^\\d*$",
+                                      "example": "123456789"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -12471,6 +12496,11 @@
                       "detail_description": {
                         "type": "string"
                       },
+                      "total_revenue": {
+                        "type": "string",
+                        "pattern": "^\\d*$",
+                        "example": "123456789"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -13833,6 +13863,11 @@
               },
               "detail_description": {
                 "type": "string"
+              },
+              "total_revenue": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
               }
             }
           }
@@ -15453,6 +15488,11 @@
                                     "detail_description": {
                                       "type": "string"
                                     },
+                                    "total_revenue": {
+                                      "type": "string",
+                                      "pattern": "^\\d*$",
+                                      "example": "123456789"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -15649,6 +15689,11 @@
           },
           "detail_description": {
             "type": "string"
+          },
+          "total_revenue": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
           },
           "createdAt": {
             "type": "string",
@@ -17102,6 +17147,11 @@
                       },
                       "detail_description": {
                         "type": "string"
+                      },
+                      "total_revenue": {
+                        "type": "string",
+                        "pattern": "^\\d*$",
+                        "example": "123456789"
                       },
                       "createdAt": {
                         "type": "string",
@@ -21027,6 +21077,11 @@
                                                 "detail_description": {
                                                   "type": "string"
                                                 },
+                                                "total_revenue": {
+                                                  "type": "string",
+                                                  "pattern": "^\\d*$",
+                                                  "example": "123456789"
+                                                },
                                                 "createdAt": {
                                                   "type": "string",
                                                   "format": "date-time"
@@ -23425,6 +23480,11 @@
                                   },
                                   "detail_description": {
                                     "type": "string"
+                                  },
+                                  "total_revenue": {
+                                    "type": "string",
+                                    "pattern": "^\\d*$",
+                                    "example": "123456789"
                                   },
                                   "createdAt": {
                                     "type": "string",

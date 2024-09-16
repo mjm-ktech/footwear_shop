@@ -49,7 +49,8 @@ export default {
             await strapi.db
             .connection("products")
             .where({ id: order_detail.product.id })
-            .increment("total_purchase", 1);
+            .increment("total_purchase", 1)
+            .increment("total_revenue", Number(order_detail.quantity) * Number(order_detail.unit_price))
           })
         }
       }

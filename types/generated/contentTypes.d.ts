@@ -1294,6 +1294,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
+    total_revenue: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

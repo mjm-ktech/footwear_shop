@@ -120,6 +120,10 @@
         "preset": "toolbar"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "total_revenue": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }
