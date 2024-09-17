@@ -28,6 +28,12 @@
     "stock": {
       "type": "integer",
       "default": 0
+    },
+    "membership_class": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::membership-class.membership-class",
+      "inversedBy": "vouchers"
     }
   }
 }

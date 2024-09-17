@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "membership_classes",
+  "info": {
+    "singularName": "membership-class",
+    "pluralName": "membership-classes",
+    "displayName": "membership class"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "point": {
+      "default": 0,
+      "type": "integer"
+    },
+    "vouchers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::voucher.voucher",
+      "mappedBy": "membership_class"
+    }
+  }
+}
