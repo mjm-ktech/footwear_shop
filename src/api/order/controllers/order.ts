@@ -10,7 +10,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
   async create(ctx) {
     try {
       const body = ctx.request.body.data;
-      const { items, voucher } = ctx.request.body.data;
+      const { items, voucher, user } = ctx.request.body.data;
       delete body.items;
       let errors = [];
       let total = 0;
@@ -34,8 +34,19 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
       }));
       if (voucher.id){
         const checkVoucher = await strapi.entityService.findOne("api::voucher.voucher", voucher.id);
-        if (!checkVoucher) {
-          throw new ValidationError("voucher not found");
+        const userVoucher = await strapi.entityService.findMany("api::user-voucher.user-voucher", {
+          filters: {
+            user: {
+              id: user.id
+            },
+            voucher: {
+              id: voucher.id
+            },
+            status: "USED"
+          }
+        });
+        if (!checkVoucher || userVoucher.length === 1) {
+          throw new ValidationError("voucher is not valid");
         }
         const reducePercent = checkVoucher?.percent_decrease || 0;
 
