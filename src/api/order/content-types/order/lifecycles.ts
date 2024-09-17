@@ -21,6 +21,11 @@ export default {
     try {
       const { result, params } = event;
       const { name, id, status, total } = result;
+      const order = await strapi.entityService.findOne("api::order.order", id, {
+        populate: {
+          user: true
+        }
+      })
       if (status === "CONFIRM") {
         await strapi.services["api::order.order"].countOrderByDay(total);
         const check = await strapi.services["api::order.order"].reduceStockForProduct(id);
@@ -53,6 +58,7 @@ export default {
             .increment("total_revenue", Number(order_detail.quantity) * Number(order_detail.unit_price))
           })
         }
+        await strapi.services["api::order.order"].updatePointForUser(order.user.id,total);
       }
     } catch (e) {
       strapi.log.error(`fail after update advertisement ${e}`);

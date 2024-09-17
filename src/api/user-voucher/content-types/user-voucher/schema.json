@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_vouchers",
+  "info": {
+    "singularName": "user-voucher",
+    "pluralName": "user-vouchers",
+    "displayName": "user voucher "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "voucher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::voucher.voucher"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "USED",
+        "UNUSED"
+      ],
+      "default": "UNUSED"
+    }
+  }
+}

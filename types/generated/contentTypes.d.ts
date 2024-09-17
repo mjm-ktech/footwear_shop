@@ -771,6 +771,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     type: Attribute.Enumeration<['ADMIN', 'USER']> &
       Attribute.DefaultTo<'USER'>;
     address: Attribute.Text;
+    point: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1005,6 +1006,43 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMembershipClassMembershipClass
+  extends Schema.CollectionType {
+  collectionName: 'membership_classes';
+  info: {
+    singularName: 'membership-class';
+    pluralName: 'membership-classes';
+    displayName: 'membership class';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    point: Attribute.Integer & Attribute.DefaultTo<0>;
+    vouchers: Attribute.Relation<
+      'api::membership-class.membership-class',
+      'oneToMany',
+      'api::voucher.voucher'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::membership-class.membership-class',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::membership-class.membership-class',
       'oneToOne',
       'admin::user'
     > &
@@ -1456,6 +1494,47 @@ export interface ApiTransactionTransaction extends Schema.CollectionType {
   };
 }
 
+export interface ApiUserVoucherUserVoucher extends Schema.CollectionType {
+  collectionName: 'user_vouchers';
+  info: {
+    singularName: 'user-voucher';
+    pluralName: 'user-vouchers';
+    displayName: 'user voucher ';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    voucher: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'api::voucher.voucher'
+    >;
+    user: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    status: Attribute.Enumeration<['USED', 'UNUSED']> &
+      Attribute.DefaultTo<'UNUSED'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVoucherVoucher extends Schema.CollectionType {
   collectionName: 'vouchers';
   info: {
@@ -1472,6 +1551,11 @@ export interface ApiVoucherVoucher extends Schema.CollectionType {
     amount_decrease: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     expiry_date: Attribute.DateTime;
     stock: Attribute.Integer & Attribute.DefaultTo<0>;
+    membership_class: Attribute.Relation<
+      'api::voucher.voucher',
+      'manyToOne',
+      'api::membership-class.membership-class'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1552,6 +1636,7 @@ declare module '@strapi/types' {
       'api::color.color': ApiColorColor;
       'api::comment.comment': ApiCommentComment;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::membership-class.membership-class': ApiMembershipClassMembershipClass;
       'api::notification.notification': ApiNotificationNotification;
       'api::order.order': ApiOrderOrder;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
@@ -1561,6 +1646,7 @@ declare module '@strapi/types' {
       'api::reel.reel': ApiReelReel;
       'api::reel-activity.reel-activity': ApiReelActivityReelActivity;
       'api::transaction.transaction': ApiTransactionTransaction;
+      'api::user-voucher.user-voucher': ApiUserVoucherUserVoucher;
       'api::voucher.voucher': ApiVoucherVoucher;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }

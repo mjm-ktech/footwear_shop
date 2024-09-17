@@ -14,7 +14,10 @@ export default factories.createCoreController(
           ...query,
           populate: {
             banner: {
-              fields: ["caption", "url"],
+              fields: ["caption", "url", "formats"],
+              populate: {
+                format: true,
+              }
             },
             new_product: {
               populate: {

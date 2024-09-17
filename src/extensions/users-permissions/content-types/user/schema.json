@@ -97,6 +97,10 @@
     },
     "address": {
       "type": "text"
+    },
+    "point": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
