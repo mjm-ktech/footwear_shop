@@ -77,6 +77,15 @@ export default factories.createCoreController(
           } else {
             discount = Number(reduceAmount);
           }
+          await strapi.entityService.update(
+            "api::user-voucher.user-voucher",
+            userVoucher[0].id,
+            {
+              data: {
+                status: "USED",
+              },
+            }
+          );
         }
         total += Number(TRANSPORT_FEE);
         body.total = total - discount;
