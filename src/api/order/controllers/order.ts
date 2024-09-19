@@ -111,11 +111,7 @@ export default factories.createCoreController(
         if (errors.length > 0) {
           throw new ValidationError(`product_detail_id: ${errors} not found`);
         }
-        const order = await strapi.entityService.create("api::order.order", {
-          data: {
-            ...body,
-          },
-        });
+
         let checkResult = [];
         await Promise.all(
           items.map(async (item) => {
@@ -138,6 +134,11 @@ export default factories.createCoreController(
         if (checkResult.length > 0) {
           return ctx.badRequest(`Các sản phẩm: ${checkResult} không đủ hàng`);
         }
+        const order = await strapi.entityService.create("api::order.order", {
+          data: {
+            ...body,
+          },
+        });
         items.map(async (item) => {
           const productDetail = await strapi.entityService.findOne(
             "api::product-detail.product-detail",
