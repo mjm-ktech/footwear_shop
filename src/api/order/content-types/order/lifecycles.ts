@@ -1,4 +1,5 @@
-import { debug } from "../../../../utils"
+import { debug } from "../../../../utils";
+import { isNull } from "lodash";
 export default {
   async afterCreate(event) {
     try {
@@ -58,7 +59,9 @@ export default {
             .increment("total_revenue", Number(order_detail.quantity) * Number(order_detail.unit_price))
           })
         }
-        await strapi.services["api::order.order"].updatePointForUser(order.user.id,total);
+        if (isNull(order?.user) === false) {
+          await strapi.services["api::order.order"].updatePointForUser(order.user.id,total);
+        }
       }
     } catch (e) {
       strapi.log.error(`fail after update advertisement ${e}`);
