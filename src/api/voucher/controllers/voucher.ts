@@ -17,7 +17,9 @@ export default factories.createCoreController(
         "api::voucher.voucher",
         {
           filters: {
-            code: code,
+            code: {
+              "$eqi": code
+            },
           },
         }
       );
