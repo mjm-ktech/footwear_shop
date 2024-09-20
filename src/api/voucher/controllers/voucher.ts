@@ -9,7 +9,7 @@ export default factories.createCoreController(
   ({ strapi }) => ({
     async checkVoucher(ctx) {
       const { code } = ctx.request.body;
-
+      const { id } = ctx.state.user;
       if (!code) {
         return ctx.badRequest("code is required");
       }
@@ -31,6 +31,9 @@ export default factories.createCoreController(
               id: voucher[0].id,
             },
             status: "USED",
+            user: {
+              id: id
+            }
           },
         }
       )
