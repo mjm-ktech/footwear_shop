@@ -1500,9 +1500,10 @@ export interface ApiUserVoucherUserVoucher extends Schema.CollectionType {
     singularName: 'user-voucher';
     pluralName: 'user-vouchers';
     displayName: 'user voucher ';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     voucher: Attribute.Relation<
@@ -1519,7 +1520,6 @@ export interface ApiUserVoucherUserVoucher extends Schema.CollectionType {
       Attribute.DefaultTo<'UNUSED'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::user-voucher.user-voucher',
       'oneToOne',
