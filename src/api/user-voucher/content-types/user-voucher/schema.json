@@ -4,10 +4,11 @@
   "info": {
     "singularName": "user-voucher",
     "pluralName": "user-vouchers",
-    "displayName": "user voucher "
+    "displayName": "user voucher ",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

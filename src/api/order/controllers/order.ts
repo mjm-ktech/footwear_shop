@@ -77,6 +77,32 @@ export default factories.createCoreController(
           } else {
             discount = Number(reduceAmount);
           }
+          const userVoucher2 = await strapi.entityService.findMany(
+            "api::user-voucher.user-voucher",
+            {
+              filters: {
+                user: {
+                  id: user.id,
+                },
+                voucher: {
+                  id: voucher.id,
+                },
+                status: "UNUSED",
+              },
+            }
+          );
+          if (userVoucher2.length > 0) {
+            await strapi.entityService.update(
+              "api::user-voucher.user-voucher",
+              userVoucher2[0].id,
+              {
+                data: {
+                  status: "USED",
+                },
+              }
+            );
+          }
+
         }
         total += Number(TRANSPORT_FEE);
         body.total = total - discount;
@@ -85,11 +111,7 @@ export default factories.createCoreController(
         if (errors.length > 0) {
           throw new ValidationError(`product_detail_id: ${errors} not found`);
         }
-        const order = await strapi.entityService.create("api::order.order", {
-          data: {
-            ...body,
-          },
-        });
+
         let checkResult = [];
         await Promise.all(
           items.map(async (item) => {
@@ -112,6 +134,11 @@ export default factories.createCoreController(
         if (checkResult.length > 0) {
           return ctx.badRequest(`Các sản phẩm: ${checkResult} không đủ hàng`);
         }
+        const order = await strapi.entityService.create("api::order.order", {
+          data: {
+            ...body,
+          },
+        });
         items.map(async (item) => {
           const productDetail = await strapi.entityService.findOne(
             "api::product-detail.product-detail",
