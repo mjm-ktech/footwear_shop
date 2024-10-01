@@ -23,7 +23,7 @@ export default {
       }
     });
 
-    if (!promotion_price || promotion_price === 0) {
+    if (promotion_price == 0) {
       await strapi.entityService.update("api::product.product", id, {
         data: {
           promotion_price: price
