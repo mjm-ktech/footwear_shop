@@ -48,11 +48,11 @@ export default factories.createCoreController(
                               fields: ["caption", "url"],
                             },
                             color: true,
-                            product_detail: true,
+                            product_details: true,
                           },
                         },
                         color: true,
-                        product_detail: true,
+                        product_details: true,
                       },
                     },
                   },
@@ -70,7 +70,7 @@ export default factories.createCoreController(
                     is_parent: true,
                   },
                   populate: {
-                    product_detail: true,
+                    product_details: true,
                     children_product: {
                       fields: ["name", "slug", "price", "promotion_price"],
                       filter: {
@@ -82,7 +82,7 @@ export default factories.createCoreController(
                           fields: ["caption", "url"],
                         },
                         color: true,
-                        product_detail: true,
+                        product_details: true,
                       },
                     },
                     avatar: {
@@ -104,7 +104,7 @@ export default factories.createCoreController(
                     is_parent: true,
                   },
                   populate: {
-                    product_detail: true,
+                    product_details: true,
                     children_product: {
                       fields: ["name", "slug", "price", "promotion_price"],
                       filter: {
@@ -116,7 +116,7 @@ export default factories.createCoreController(
                           fields: ["caption", "url"],
                         },
                         color: true,
-                        product_detail: true,
+                        product_details: true,
                       },
                     },
                     avatar: {
@@ -138,7 +138,7 @@ export default factories.createCoreController(
                     is_parent: true,
                   },
                   populate: {
-                    product_detail: true,
+                    product_details: true,
                     children_product: {
                       fields: ["name", "slug", "price", "promotion_price"],
                       filter: {
@@ -150,7 +150,7 @@ export default factories.createCoreController(
                           fields: ["caption", "url"],
                         },
                         color: true,
-                        product_detail: true,
+                        product_details: true,
                       },
                     },
                     avatar: {
