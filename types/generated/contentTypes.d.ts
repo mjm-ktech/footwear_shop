@@ -869,6 +869,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
+    vouchers: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::voucher.voucher'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
