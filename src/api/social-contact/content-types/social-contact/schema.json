@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "social_contacts",
+  "info": {
+    "singularName": "social-contact",
+    "pluralName": "social-contacts",
+    "displayName": "Social contact"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone_link": {
+      "type": "string"
+    },
+    "zalo_link": {
+      "type": "string"
+    },
+    "messenger_link": {
+      "type": "string"
+    }
+  }
+}
