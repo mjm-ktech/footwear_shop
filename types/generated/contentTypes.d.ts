@@ -1453,6 +1453,37 @@ export interface ApiReelActivityReelActivity extends Schema.CollectionType {
   };
 }
 
+export interface ApiSocialContactSocialContact extends Schema.SingleType {
+  collectionName: 'social_contacts';
+  info: {
+    singularName: 'social-contact';
+    pluralName: 'social-contacts';
+    displayName: 'Social contact';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    phone_link: Attribute.String;
+    zalo_link: Attribute.String;
+    messenger_link: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social-contact.social-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social-contact.social-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTransactionTransaction extends Schema.CollectionType {
   collectionName: 'transactions';
   info: {
@@ -1645,6 +1676,7 @@ declare module '@strapi/types' {
       'api::product-detail.product-detail': ApiProductDetailProductDetail;
       'api::reel.reel': ApiReelReel;
       'api::reel-activity.reel-activity': ApiReelActivityReelActivity;
+      'api::social-contact.social-contact': ApiSocialContactSocialContact;
       'api::transaction.transaction': ApiTransactionTransaction;
       'api::user-voucher.user-voucher': ApiUserVoucherUserVoucher;
       'api::voucher.voucher': ApiVoucherVoucher;

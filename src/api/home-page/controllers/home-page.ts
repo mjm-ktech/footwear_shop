@@ -47,6 +47,9 @@ export default factories.createCoreController(
                             avatar: {
                               fields: ["caption", "url"],
                             },
+                            gallery: {
+                              fields: ["caption", "url"],
+                            },
                             color: true,
                             product_details: true,
                           },
@@ -79,6 +82,9 @@ export default factories.createCoreController(
                       },
                       populate: {
                         avatar: {
+                          fields: ["caption", "url"],
+                        },
+                        gallery: {
                           fields: ["caption", "url"],
                         },
                         color: true,
@@ -115,6 +121,9 @@ export default factories.createCoreController(
                         avatar: {
                           fields: ["caption", "url"],
                         },
+                        gallery: {
+                          fields: ["caption", "url"],
+                        },
                         color: true,
                         product_details: true,
                       },
@@ -147,6 +156,9 @@ export default factories.createCoreController(
                       },
                       populate: {
                         avatar: {
+                          fields: ["caption", "url"],
+                        },
+                        gallery: {
                           fields: ["caption", "url"],
                         },
                         color: true,
