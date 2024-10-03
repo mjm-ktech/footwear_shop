@@ -124,6 +124,11 @@
     "total_revenue": {
       "type": "biginteger",
       "default": "0"
+    },
+    "vouchers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::voucher.voucher"
     }
   }
 }

@@ -869,11 +869,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
-    vouchers: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::voucher.voucher'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1338,6 +1333,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
         }
       >;
     total_revenue: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    vouchers: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::voucher.voucher'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
