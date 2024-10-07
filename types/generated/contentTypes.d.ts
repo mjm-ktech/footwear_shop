@@ -842,6 +842,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'Blog';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -854,7 +855,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
     banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     slug: Attribute.String;
     blog_category: Attribute.Relation<
@@ -883,8 +884,8 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
-    slug: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
+    slug: Attribute.String & Attribute.Unique;
     blogs: Attribute.Relation<
       'api::blog-category.blog-category',
       'oneToMany',
