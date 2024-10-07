@@ -42,6 +42,9 @@
       "relation": "manyToOne",
       "target": "api::blog-category.blog-category",
       "inversedBy": "blogs"
+    },
+    "short_description": {
+      "type": "text"
     }
   }
 }

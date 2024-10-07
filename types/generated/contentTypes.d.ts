@@ -863,6 +863,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'manyToOne',
       'api::blog-category.blog-category'
     >;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
