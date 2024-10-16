@@ -42,15 +42,16 @@
       "repeatable": true,
       "component": "best-selling.sale-product"
     },
-    "Banner_for_mobile": {
+    "banner_for_mobile": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }
