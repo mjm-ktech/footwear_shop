@@ -19,6 +19,12 @@ export default factories.createCoreController(
                 format: true,
               },
             },
+            banner_for_mobile: {
+              fields: ["caption", "url", "formats"],
+              populate: {
+                format: true,
+              },
+            },
             new_product: {
               populate: {
                 category: {
