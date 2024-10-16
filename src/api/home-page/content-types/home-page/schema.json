@@ -41,6 +41,16 @@
       "type": "component",
       "repeatable": true,
       "component": "best-selling.sale-product"
+    },
+    "Banner_for_mobile": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

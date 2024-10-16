@@ -1068,6 +1068,10 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     >;
     best_selling: Attribute.Component<'best-selling.best-selling', true>;
     sale_product: Attribute.Component<'best-selling.sale-product', true>;
+    Banner_for_mobile: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
