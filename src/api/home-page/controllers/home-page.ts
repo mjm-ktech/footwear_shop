@@ -25,53 +25,7 @@ export default factories.createCoreController(
                 format: true,
               },
             },
-            new_product: {
-              populate: {
-                category: {
-                  fields: ["name", "slug"],
-                  populate: {
-                    products: {
-                      fields: ["name", "slug", "price", "promotion_price"],
-                      filter: {
-                        isShow: true,
-                        is_parent: true,
-                      },
-                      populate: {
-                        avatar: {
-                          fields: ["caption", "url"],
-                        },
-                        gallery: {
-                          fields: ["caption", "url"],
-                        },
-                        children_product: {
-                          fields: ["name", "slug", "price", "promotion_price"],
-                          filter: {
-                            isShow: true,
-                            is_parent: false,
-                          },
-                          populate: {
-                            avatar: {
-                              fields: ["caption", "url"],
-                            },
-                            gallery: {
-                              fields: ["caption", "url"],
-                            },
-                            color: true,
-                            product_details: true,
-                          },
-                        },
-                        color: true,
-                        product_details: true,
-                      },
-                    },
-                  },
-                },
-                image: {
-                  fields: ["caption", "url"],
-                },
-              },
-            },
-            special_product: {
+            favorite_products: {
               populate: {
                 product: {
                   filter: {
@@ -108,78 +62,26 @@ export default factories.createCoreController(
                 },
               },
             },
-            best_selling: {
+            category_blocks_1: {
               populate: {
-                product: {
-                  filter: {
-                    isShow: true,
-                    is_parent: true,
-                  },
+                category: true,
+                banner: {
+                  fields: ["caption", "url", "formats"],
                   populate: {
-                    product_details: true,
-                    children_product: {
-                      fields: ["name", "slug", "price", "promotion_price"],
-                      filter: {
-                        isShow: true,
-                        is_parent: false,
-                      },
-                      populate: {
-                        avatar: {
-                          fields: ["caption", "url"],
-                        },
-                        gallery: {
-                          fields: ["caption", "url"],
-                        },
-                        color: true,
-                        product_details: true,
-                      },
-                    },
-                    avatar: {
-                      fields: ["caption", "url"],
-                    },
-                    gallery: {
-                      fields: ["caption", "url"],
-                    },
-                    color: true,
+                    format: true,
                   },
-                },
+                }
               },
             },
-            sale_product: {
+            category_blocks_2: {
               populate: {
-                product: {
-                  filter: {
-                    isShow: true,
-                    is_parent: true,
-                  },
+                category: true,
+                banner: {
+                  fields: ["caption", "url", "formats"],
                   populate: {
-                    product_details: true,
-                    children_product: {
-                      fields: ["name", "slug", "price", "promotion_price"],
-                      filter: {
-                        isShow: true,
-                        is_parent: false,
-                      },
-                      populate: {
-                        avatar: {
-                          fields: ["caption", "url"],
-                        },
-                        gallery: {
-                          fields: ["caption", "url"],
-                        },
-                        color: true,
-                        product_details: true,
-                      },
-                    },
-                    avatar: {
-                      fields: ["caption", "url"],
-                    },
-                    gallery: {
-                      fields: ["caption", "url"],
-                    },
-                    color: true,
+                    format: true,
                   },
-                },
+                }
               },
             },
           },

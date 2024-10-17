@@ -1048,6 +1048,36 @@ export interface ApiCommentComment extends Schema.CollectionType {
   };
 }
 
+export interface ApiCustomerInfoCustomerInfo extends Schema.CollectionType {
+  collectionName: 'customer_infos';
+  info: {
+    singularName: 'customer-info';
+    pluralName: 'customer-infos';
+    displayName: 'Customer info';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    email: Attribute.String;
+    phone: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::customer-info.customer-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::customer-info.customer-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomePageHomePage extends Schema.SingleType {
   collectionName: 'home_pages';
   info: {
@@ -1061,17 +1091,13 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
   attributes: {
     banner: Attribute.Media<'images', true>;
-    new_product: Attribute.Component<'new-product.new-product', true>;
-    special_product: Attribute.Component<
-      'special-product.special-product',
-      true
-    >;
-    best_selling: Attribute.Component<'best-selling.best-selling', true>;
-    sale_product: Attribute.Component<'best-selling.sale-product', true>;
+    category_blocks_1: Attribute.Component<'new-product.new-product', true>;
+    favorite_products: Attribute.Component<'best-selling.best-selling', true>;
     banner_for_mobile: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    category_blocks_2: Attribute.Component<'new-product.new-product', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1750,6 +1776,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::color.color': ApiColorColor;
       'api::comment.comment': ApiCommentComment;
+      'api::customer-info.customer-info': ApiCustomerInfoCustomerInfo;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::membership-class.membership-class': ApiMembershipClassMembershipClass;
       'api::notification.notification': ApiNotificationNotification;

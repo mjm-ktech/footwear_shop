@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customer_infos",
+  "info": {
+    "singularName": "customer-info",
+    "pluralName": "customer-infos",
+    "displayName": "Customer info"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    }
+  }
+}
