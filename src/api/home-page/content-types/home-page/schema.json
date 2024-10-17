@@ -20,27 +20,16 @@
         "images"
       ]
     },
-    "new_product": {
+    "category_blocks_1": {
       "type": "component",
       "repeatable": true,
       "component": "new-product.new-product"
     },
-    "special_product": {
-      "type": "component",
-      "repeatable": true,
-      "component": "special-product.special-product"
-    },
-    "best_selling": {
+    "favorite_products": {
       "displayName": "best-selling",
       "type": "component",
       "repeatable": true,
       "component": "best-selling.best-selling"
-    },
-    "sale_product": {
-      "displayName": "sale_product",
-      "type": "component",
-      "repeatable": true,
-      "component": "best-selling.sale-product"
     },
     "banner_for_mobile": {
       "type": "media",
@@ -52,6 +41,11 @@
         "videos",
         "audios"
       ]
+    },
+    "category_blocks_2": {
+      "type": "component",
+      "repeatable": true,
+      "component": "new-product.new-product"
     }
   }
 }

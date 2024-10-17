@@ -32,6 +32,7 @@ export interface NewProductNewProduct extends Schema.Component {
   collectionName: 'components_new_product_new_products';
   info: {
     displayName: 'new_product';
+    description: '';
   };
   attributes: {
     category: Attribute.Relation<
@@ -39,6 +40,7 @@ export interface NewProductNewProduct extends Schema.Component {
       'oneToOne',
       'api::category.category'
     >;
+    banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
