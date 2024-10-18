@@ -58,6 +58,7 @@ export default factories.createCoreController(
                       fields: ["caption", "url"],
                     },
                     color: true,
+                    category: true,
                   },
                 },
               },
@@ -70,7 +71,7 @@ export default factories.createCoreController(
                   populate: {
                     format: true,
                   },
-                }
+                },
               },
             },
             category_blocks_2: {
@@ -81,7 +82,7 @@ export default factories.createCoreController(
                   populate: {
                     format: true,
                   },
-                }
+                },
               },
             },
           },
