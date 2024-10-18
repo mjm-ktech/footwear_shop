@@ -58,7 +58,7 @@ export default factories.createCoreController(
                       fields: ["caption", "url"],
                     },
                     color: true,
-                    category: true,
+                    categories: true,
                   },
                 },
               },
