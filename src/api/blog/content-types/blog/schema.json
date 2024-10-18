@@ -35,7 +35,8 @@
       ]
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "blog_category": {
       "type": "relation",

@@ -857,7 +857,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       >;
     name: Attribute.String & Attribute.Unique;
     banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    slug: Attribute.String;
+    slug: Attribute.String & Attribute.Unique;
     blog_category: Attribute.Relation<
       'api::blog.blog',
       'manyToOne',
@@ -922,7 +922,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    slug: Attribute.String;
+    slug: Attribute.String & Attribute.Unique;
     isShow: Attribute.Boolean & Attribute.DefaultTo<true>;
     description: Attribute.Text;
     childs: Attribute.Relation<
