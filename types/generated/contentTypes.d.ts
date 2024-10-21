@@ -1713,6 +1713,36 @@ export interface ApiVoucherVoucher extends Schema.CollectionType {
   };
 }
 
+export interface ApiWelcomeModalWelcomeModal extends Schema.SingleType {
+  collectionName: 'welcome_modals';
+  info: {
+    singularName: 'welcome-modal';
+    pluralName: 'welcome-modals';
+    displayName: 'Welcome modal';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    content: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::welcome-modal.welcome-modal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::welcome-modal.welcome-modal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWishlistWishlist extends Schema.CollectionType {
   collectionName: 'wishlists';
   info: {
@@ -1791,6 +1821,7 @@ declare module '@strapi/types' {
       'api::transaction.transaction': ApiTransactionTransaction;
       'api::user-voucher.user-voucher': ApiUserVoucherUserVoucher;
       'api::voucher.voucher': ApiVoucherVoucher;
+      'api::welcome-modal.welcome-modal': ApiWelcomeModalWelcomeModal;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }

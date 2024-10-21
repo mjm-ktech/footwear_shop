@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "welcome_modals",
+  "info": {
+    "singularName": "welcome-modal",
+    "pluralName": "welcome-modals",
+    "displayName": "Welcome modal"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}
