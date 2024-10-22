@@ -25,22 +25,34 @@ export default factories.createCoreController(
                 format: true,
               },
             },
-            favorite_products: {
+            product_block: {
               populate: {
-                product: {
-                  filter: {
-                    isShow: true,
-                    is_parent: true,
-                  },
+                products: {
                   populate: {
-                    product_details: true,
-                    children_product: {
-                      fields: ["name", "slug", "price", "promotion_price"],
+                    product: {
                       filter: {
                         isShow: true,
-                        is_parent: false,
+                        is_parent: true,
                       },
                       populate: {
+                        product_details: true,
+                        children_product: {
+                          fields: ["name", "slug", "price", "promotion_price"],
+                          filter: {
+                            isShow: true,
+                            is_parent: false,
+                          },
+                          populate: {
+                            avatar: {
+                              fields: ["caption", "url"],
+                            },
+                            gallery: {
+                              fields: ["caption", "url"],
+                            },
+                            color: true,
+                            product_details: true,
+                          },
+                        },
                         avatar: {
                           fields: ["caption", "url"],
                         },
@@ -48,17 +60,9 @@ export default factories.createCoreController(
                           fields: ["caption", "url"],
                         },
                         color: true,
-                        product_details: true,
+                        categories: true,
                       },
                     },
-                    avatar: {
-                      fields: ["caption", "url"],
-                    },
-                    gallery: {
-                      fields: ["caption", "url"],
-                    },
-                    color: true,
-                    categories: true,
                   },
                 },
               },
