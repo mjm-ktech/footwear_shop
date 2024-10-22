@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_product_block_product_blocks",
+  "info": {
+    "displayName": "product-block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "best-selling.best-selling"
+    }
+  }
+}

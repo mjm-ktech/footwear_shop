@@ -44,6 +44,18 @@ export interface NewProductNewProduct extends Schema.Component {
   };
 }
 
+export interface ProductBlockProductBlock extends Schema.Component {
+  collectionName: 'components_product_block_product_blocks';
+  info: {
+    displayName: 'product-block';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    products: Attribute.Component<'best-selling.best-selling', true>;
+  };
+}
+
 export interface SpecialProductSpecialProduct extends Schema.Component {
   collectionName: 'components_special_product_special_products';
   info: {
@@ -64,6 +76,7 @@ declare module '@strapi/types' {
       'best-selling.best-selling': BestSellingBestSelling;
       'best-selling.sale-product': BestSellingSaleProduct;
       'new-product.new-product': NewProductNewProduct;
+      'product-block.product-block': ProductBlockProductBlock;
       'special-product.special-product': SpecialProductSpecialProduct;
     }
   }

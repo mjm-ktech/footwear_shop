@@ -1092,12 +1092,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   attributes: {
     banner: Attribute.Media<'images', true>;
     category_blocks_1: Attribute.Component<'new-product.new-product', true>;
-    favorite_products: Attribute.Component<'best-selling.best-selling', true>;
     banner_for_mobile: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
     category_blocks_2: Attribute.Component<'new-product.new-product', true>;
+    product_block: Attribute.Component<'product-block.product-block'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

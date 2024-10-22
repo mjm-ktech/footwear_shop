@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-21T01:45:02.748Z"
+    "x-generation-date": "2024-10-22T04:02:49.206Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7505,12 +7505,6 @@
                   "$ref": "#/components/schemas/NewProductNewProductComponent"
                 }
               },
-              "favorite_products": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/BestSellingBestSellingComponent"
-                }
-              },
               "banner_for_mobile": {
                 "type": "array",
                 "items": {
@@ -7530,6 +7524,9 @@
                 "items": {
                   "$ref": "#/components/schemas/NewProductNewProductComponent"
                 }
+              },
+              "product_block": {
+                "$ref": "#/components/schemas/ProductBlockProductBlockComponent"
               }
             }
           }
@@ -8215,12 +8212,6 @@
               "$ref": "#/components/schemas/NewProductNewProductComponent"
             }
           },
-          "favorite_products": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BestSellingBestSellingComponent"
-            }
-          },
           "banner_for_mobile": {
             "type": "object",
             "properties": {
@@ -8368,6 +8359,9 @@
             "items": {
               "$ref": "#/components/schemas/NewProductNewProductComponent"
             }
+          },
+          "product_block": {
+            "$ref": "#/components/schemas/ProductBlockProductBlockComponent"
           },
           "createdAt": {
             "type": "string",
@@ -8603,24 +8597,38 @@
           }
         }
       },
-      "BestSellingBestSellingComponent": {
+      "ProductBlockProductBlockComponent": {
         "type": "object",
         "properties": {
           "id": {
             "type": "number"
           },
-          "product": {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "attributes": {
-                    "type": "object",
-                    "properties": {}
+          "name": {
+            "type": "string"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "product": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "attributes": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      }
+                    }
                   }
                 }
               }
