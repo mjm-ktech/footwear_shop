@@ -60,7 +60,6 @@ export default {
           })
         }
         if (isNull(order?.user) === false) {
-          console.log("hello world");
           await strapi.services["api::order.order"].updatePointForUser(order.user.id,total);
         }
       }
